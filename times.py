@@ -6,7 +6,7 @@ def time_range(start_time, end_time, number_of_intervals=1, gap_between_interval
     end_time_s = datetime.datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S")
     
     if (end_time_s < start_time_s):
-        raise ValueError("input end_time is before start_time")
+        raise ValueError('The end of the range has to come strictly after its start.')
     # calculate the single interval
     # below code achieves the same result: single duration of each interval
     d = ((end_time_s - start_time_s).total_seconds() - gap_between_intervals_s * (number_of_intervals - 1)) / number_of_intervals
