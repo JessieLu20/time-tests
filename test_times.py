@@ -14,6 +14,7 @@ def test_given_input():
         result == expected
     ), f"Expected: {expected}, but Result: {result}, doesn't match!"
 
+# Multiple tests
 def test_no_overlap():
     # wo time ranges that do not overlap
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
@@ -44,7 +45,10 @@ def test_touching_edges():
         result == expected
     ), f"Expected: {expected}, but Result: {result}, doesn't match!"
 
+# negative test
 def test_bad():
-    with pytest.raises(ValueError):
+    # an alternative sloution
+    expected_error_message = 'The end of the range has to come strictly after its start.'
+    with pytest.raises(ValueError, match=expected_error_message):
         time_range("2010-01-12 10:00:00", "2010-01-12 09:00:00")
         
