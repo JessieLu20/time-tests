@@ -14,6 +14,7 @@ def test_given_input():
         result == expected
     ), f"Expected: {expected}, but Result: {result}, doesn't match!"
 
+def test_no_overlap():
     # wo time ranges that do not overlap
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
     short = time_range("2010-01-12 08:30:00", "2010-01-12 8:45:00", 2, 60)
@@ -23,6 +24,7 @@ def test_given_input():
         result == expected
     ), f"Expected: {expected}, but Result: {result}, doesn't match!"
 
+def test_multiple_overlaps():
     # two time ranges that both contain several intervals each
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00", 2, 0)
     short = time_range("2010-01-12 11:00:00", "2010-01-12 13:00:00", 2, 0)
@@ -32,8 +34,7 @@ def test_given_input():
         result == expected
     ), f"Expected: {expected}, but Result: {result}, doesn't match!"
 
-
-def test_boundary():
+def test_touching_edges():
     # two time ranges that end exactly at the same time when the other starts
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00", 2, 60)
     short = time_range("2010-01-12 12:00:00", "2010-01-12 13:45:00", 2, 60)
@@ -42,7 +43,6 @@ def test_boundary():
     assert (
         result == expected
     ), f"Expected: {expected}, but Result: {result}, doesn't match!"
-
 
 def test_bad():
     with pytest.raises(ValueError):
