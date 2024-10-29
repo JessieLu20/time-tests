@@ -2,7 +2,6 @@
 from times import *
 import pytest
 
-
 def test_given_input():
     large = time_range("2010-01-12 10:00:00", "2010-01-12 12:00:00")
     short = time_range("2010-01-12 10:30:00", "2010-01-12 10:45:00", 2, 60)
@@ -97,3 +96,5 @@ def test_time_range_overlap(first_range, second_range, expected_overlap):
     assert (
         result == expected_overlap
     ), f"Expected: {expected_overlap}, but Result: {result}, doesn't match!"
+
+
