@@ -102,12 +102,10 @@ def test_time_range_overlap(first_range, second_range, expected_overlap):
 #
 def test_iss_passes():
     with patch.object(requests,'get') as mock_get:
-        default_pass = iss_passes()
-        
         # since I set a status check in iss_passes, it requires to
         # simulate a successful HTTP response status code to pass the status code check in the test
         mock_get.return_value.status_code = 200
-        
+        default_pass = iss_passes()
         key = '33Q884-HFUV8K-SCS3LG-55CU'
         url = f'https://api.n2yo.com/rest/v1/satellite/visualpasses/25544/41.702/-76.014/0/2/300/&apiKey={key}'
         mock_get.assert_called_with(url)
