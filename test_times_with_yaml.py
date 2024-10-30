@@ -2,6 +2,12 @@ import yaml
 from times import *
 import pytest
 
+###
+# Separate data and mocking services
+# Tests may be more manageable if the data is stored outside the tests. 
+# Also, there's no need to be hitting services every time you run your tests.
+###
+
 # Separating data from code # issue17
 # Create a fixture.yaml file where you can store what you parametrised before
 def load_test_yaml():
