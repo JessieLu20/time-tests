@@ -11,7 +11,7 @@ import pytest
 # Separating data from code # issue17
 # Create a fixture.yaml file where you can store what you parametrised before
 def load_test_yaml():
-    with open("fixture.yaml", "r") as f:
+    with open("./fixture.yaml", "r") as f:
         test_cases = yaml.safe_load(f)
     return test_cases
 
